@@ -29,32 +29,34 @@ Análisis
 #include <locale.h>
 
 //Prototipo de funciones
+void centralMeteorologica();
+void administracionCine();
 
 //Función principal
 int main()
 {
     //Variables
-    int ejecutarPrograma;
+    char ejecutarPrograma;
 
     //Menú que muestra las opciones de los distintos programas
     printf("\n\nBienvenido, antes que nada, ¿qué programa quieres ejecutar?");
-    printf("\n\n\t1): Central Meteorológica de México");
-    printf("\n\n\t2): Administración de un cine");
-    printf("\n\n\t3): Calificaciones alumnos");
+    printf("\n\n\ta): Central Meteorológica de México");
+    printf("\n\n\tb): Administración de un cine");
+    printf("\n\n\tc): Calificaciones alumnos");
 
     //Ciclo con validación para ejecutar un programa
 
     do{
         printf("\n\n¿Qué programa desea ejecutar?: ");
-        scanf("%i", &ejecutarPrograma);
+        scanf("%c", &ejecutarPrograma);
 
-        if (ejecutarPrograma == 1){
-            /* code */
+        if (ejecutarPrograma == 'a'){
+            centralMeteorologica();
         }
-        else if (ejecutarPrograma == 2){
-            /* code */
+        else if (ejecutarPrograma == 'b'){
+            administracionCine();
         }
-        else if (ejecutarPrograma == 3){
+        else if (ejecutarPrograma == 'c'){
             /* code */
         }
         else{
@@ -71,3 +73,13 @@ int main()
 }
 
 //Funciones
+
+//Ejecuta el programa 1
+void centralMeteorologica(){
+
+}
+
+//Ejecuta el programa 2
+void administracionCine(){
+
+}
