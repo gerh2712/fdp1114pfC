@@ -25,61 +25,100 @@ Análisis
 
 //Includes
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 #include <stdlib.h>
 #include <locale.h>
 
+//Constantes
+#define p printf
+#define s scanf
+
 //Prototipo de funciones
+void menu();
 void centralMeteorologica();
 void administracionCine();
+void calificacionAlumnos();
 
 //Función principal
 int main()
 {
-    //Variables
-    char ejecutarPrograma;
+    setlocale(LC_CTYPE,"Spanish");
+    menu();
 
-    //Menú que muestra las opciones de los distintos programas
-    printf("\n\nBienvenido, antes que nada, ¿qué programa quieres ejecutar?");
-    printf("\n\n\ta): Central Meteorológica de México");
-    printf("\n\n\tb): Administración de un cine");
-    printf("\n\n\tc): Calificaciones alumnos");
-
-    //Ciclo con validación para ejecutar un programa
-
-    do{
-        printf("\n\n¿Qué programa desea ejecutar?: ");
-        scanf("%c", &ejecutarPrograma);
-
-        if (ejecutarPrograma == 'a'){
-            centralMeteorologica();
-        }
-        else if (ejecutarPrograma == 'b'){
-            administracionCine();
-        }
-        else if (ejecutarPrograma == 'c'){
-            /* code */
-        }
-        else{
-            system("cls");
-            printf("\n\nParece que no has introducido una opción válida, intenta de nuevo");
-            printf("\n\n\t1): Central Meteorológica de México");
-            printf("\n\n\t2): Administración de un cine");
-            printf("\n\n\t3): Calificaciones alumnos");
-        }
-
-    } while(ejecutarPrograma != 1 && ejecutarPrograma != 2 && ejecutarPrograma != 3);
-
-    return 0;
 }
 
 //Funciones
 
+//Menu
+
+void menu(){
+        //Variables
+    char decision;
+    
+    do{
+    system("cls");
+    //Menú que muestra las opciones de los distintos programas
+    p("\n\nBienvenido, antes que nada, ¿qué programa quieres ejecutar?");
+    p("\n\n\ta) Central Meteorológica de México");
+    p("\n\n\tb) Administración de un cine");
+    p("\n\n\tc) Calificaciones alumnos");
+    p("\n\n\td) Salir");
+    p("\n=> ");
+    fflush(stdin);
+    s("%c", &decision);
+    
+
+    decision = toupper(decision);
+
+    switch (decision){
+        case 'A':
+            system("cls");
+            centralMeteorologica();
+            break;
+        case 'B':
+            system("cls");                
+            administracionCine();
+            break;
+
+        case 'C':
+            system("cls");
+            calificacionAlumnos();
+            break;
+        case 'D':
+            system("cls");
+            p("\n\nGracias por usar el programa :D\n\n");
+            exit(0);
+        default:
+            p("\n\nParece que no has introducido una opción válida, intenta de nuevo\n\n");
+            system("pause");
+        }
+
+    } while(decision != 'A' && decision != 'B' && decision != 'C');
+
+    
+}
+
 //Ejecuta el programa 1
 void centralMeteorologica(){
+char continuar;
+    p("\n\n¿Quieres regresar al menu?: \n S: Sí");
+    fflush(stdin);
+    s("%c",&continuar);
+    continuar = toupper(continuar);
+
+    if (continuar == 'S'){
+        return(menu());
+    }
 
 }
 
 //Ejecuta el programa 2
 void administracionCine(){
+
+}
+
+//Ejecuta el programa 3
+void calificacionAlumnos(){
 
 }
