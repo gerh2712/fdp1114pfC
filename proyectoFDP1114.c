@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <locale.h>
 #include "centralMeteorologica.h"
+#include "administracionCine.h"
+#include "calificacionAlumnos.h"
 
 //Constantes
 #define p printf
@@ -13,8 +15,6 @@
 
 //Prototipo de funciones
 void menu();
-void administracionCine();
-void calificacionAlumnos();
 
 //Función principal
 int main()
@@ -75,14 +75,3 @@ void menu(){
     
 }
 
-
-
-//Ejecuta el programa 2
-void administracionCine(){
-
-}
-
-//Ejecuta el programa 3
-void calificacionAlumnos(){
-
-}

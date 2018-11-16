@@ -6,3 +6,13 @@ Análisis
     Salidas
     Restricciones
 */
+
+//Prototipo de función 
+void administracionCine();
+
+
+
+//Ejecuta el programa 2
+void administracionCine(){
+
+}
