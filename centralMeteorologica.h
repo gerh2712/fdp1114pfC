@@ -7,6 +7,8 @@ Análisis
     Restricciones
 */
 
+//TODO: CAMBIAR VARIABLES POR CONSTANTES PARA LOS ARREGLOS
+
 //Includes
 #include <stdio.h>
 #include <string.h>
