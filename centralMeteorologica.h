@@ -6,6 +6,17 @@ Análisis
     Salidas
     Restricciones
 */
+
+//Includes
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+
+//Constantes
+#define p printf
+#define s scanf
+
 void centralMeteorologica();
 
 //Ejecuta el programa 1
