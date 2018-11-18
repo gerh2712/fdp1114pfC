@@ -44,7 +44,7 @@ void centralMeteorologica(){
 	
 	for(i=0; i<anios; i++ ){
 		for(j=0;j<12;j++){
-			p("\nLluvia caida en la temporada [%d] en el mes [%s] en el NORTE del pais: ",i+1,meses[j]);
+			p("\nLluvia caida en la temporada [%d] en el mes de [%s] en el NORTE del pais: ",i+1,meses[j]);
 		    s("%f",&norte[j]);
 
 		}
@@ -53,14 +53,14 @@ void centralMeteorologica(){
 	system("cls");
 	for(i=0; i<anios; i++){
 		for(j=0;j<12;j++){
-		p("\nLluvia caida en la temporada [%d] en el mes [%s] en el CENTRO del pais: ",i+1,meses[j]);
+		p("\nLluvia caida en la temporada [%d] en el mes de [%s] en el CENTRO del pais: ",i+1,meses[j]);
 		s("%f",&centro[j]);
 		}
 	}
 	system("cls");
 	for(i=0;i<anios;i++){
 		for(j=0;j<12;j++){
-		p("\nLluvia caida en la temporada [%d] en el mes [%s] en el SUR del pais: ",i+1,meses[j]);
+		p("\nLluvia caida en la temporada [%d] en el mes de [%s] en el SUR del pais: ",i+1,meses[j]);
 		s("%f",&sur[j]);
 		}
 	}
@@ -71,10 +71,10 @@ void centralMeteorologica(){
 	do{	
 		system("cls");
 		p("\n\n\tMenu: ");
-		p("\n\na) El promedio anual de la región CENTRO.");
-		p("\nb) El mes y registro con menor lluvia en la región SUR.");
-		p("\nc) El mes y registro con mayor lluvia en la región NORTE.");
-		p("\nd) La región con mayor lluvia anual.");
+		p("\n\na) El promedio anual de la region CENTRO.");
+		p("\nb) El mes y registro con menor lluvia en la region SUR.");
+		p("\nc) El mes y registro con mayor lluvia en la region NORTE.");
+		p("\nd) La region con mayor lluvia anual.");
 		p("\ne) Regresar al menu anterior.");
 		p("\nf) Mostrar tabla con todos los datos.");
 		p("\ng) Salir.");
@@ -170,7 +170,7 @@ void centralMeteorologica(){
 				p("\n\nGracias por usar el programa hasta luego :D");
 				exit(0);
 			default:
-				p("\n\nAviso: Opción invalida intentelo de nuevo\n\n");	
+				p("\n\nAviso: Opcion invalida intentelo de nuevo\n\n");	
 				getchar();
 				p("\n\nPulsa enter para continuar...");
 				getchar();

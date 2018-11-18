@@ -26,7 +26,7 @@ void mostrarArreglo(float calif[],int n);
 //Ejecuta el programa 3
 void calificacionAlumnos(){
     int i,j,cntCal=0,cuenta[10],cntModa=0,n,numero,posicion,posicionM;
-	float promedio,varianzaT,numVarianza,desviacionT,modaT=0,newModa=0,calif[100];
+	float promedio=0,varianzaT=0,numVarianza=0,desviacionT=0,modaT=0,newModa=0,calif[100];
 	p("\nBienvenido, a partir de las calificaciones de estudiantes que hicieron el examen de ingreso a la Universidad, el programa nos dara informacion estadistica. \n ");
 	p("Ingrese cuantas calificaciones va a insertar\n");
     p("=> ");
@@ -194,8 +194,7 @@ void menuCalificaciones(){
                 break;
             case 8:
                 p("Saliendo del programa, retornando al menu.");
-                exit(0);
-                return (menu());
+                return(menu());
                 break;
             default:
                 p("\nOpcion Invalida, inserte una opcion correcta");

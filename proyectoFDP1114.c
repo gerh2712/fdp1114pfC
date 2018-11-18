@@ -6,7 +6,7 @@
 #include <math.h>
 #include <locale.h>
 #include "centralMeteorologica.h"
-#include "administracionCine.h"
+//#include "administracionCine.h"
 //#include "calificacionAlumnos.h"
 
 //Constantes
@@ -37,9 +37,9 @@ void menu(){
     do{
     system("cls");
     //Menú que muestra las opciones de los distintos programas
-    p("\n\nBienvenido, antes que nada, ¿qué programa quieres ejecutar?");
-    p("\n\n\ta) Central Meteorológica de México");
-    p("\n\n\tb) Administración de un cine");
+    p("\n\nBienvenido");
+    p("\n\n\ta) Central Meteorologica de Mexico");
+    p("\n\n\tb) Administracion de un cine");
     p("\n\n\tc) Calificaciones alumnos");
     p("\n\n\td) Salir");
     p("\n=> ");
@@ -57,7 +57,7 @@ void menu(){
             break;
         case 'B':
             system("cls");                
-            administracionCine();
+            //administracionCine();
             break;
 
         case 'C':
@@ -70,7 +70,9 @@ void menu(){
             exit(0);
         default:
             p("\n\nParece que no has introducido una opción válida, intenta de nuevo\n\n");
-            system("pause");
+			getchar();
+			p("\n\nPulsa enter para continuar...");
+			getchar();
         }
 
     } while(decision != 'A' && decision != 'B' && decision != 'C');
