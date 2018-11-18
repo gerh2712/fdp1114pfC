@@ -22,7 +22,6 @@ Análisis
 //Constantes
 #define p printf
 #define s scanf
-#define tiempo 12
 #define cls cls
 
 void centralMeteorologica();
@@ -31,7 +30,7 @@ void centralMeteorologica();
 void centralMeteorologica(){
 
 	
-	int i,j,mesS,mesN,anios=tiempo/12;
+	int i,j,mesS,mesN,tiempo=12,anios=tiempo/12;
 	float norte[tiempo],centro[tiempo],sur[tiempo],sumaC=0,menorS,mayorN,total_norte=0,total_centro=0,total_sur=0;
 	char consulta,meses[12][20] = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
 	float promedioC;
@@ -45,7 +44,7 @@ void centralMeteorologica(){
 	for(i=0; i<anios; i++ ){
 		for(j=0;j<12;j++){
 			p("\nLluvia caida en el año [%d] en el mes [%s] en el NORTE del país: ",i+1,meses[j]);
-		    s("%f",&norte[i]);
+		    s("%f",&norte[j]);
 
 		}
     }
@@ -54,16 +53,17 @@ void centralMeteorologica(){
 	for(i=0; i<anios; i++){
 		for(j=0;j<12;j++){
 		p("\nLluvia caida en el año [%d] en el mes [%s] en el CENTRO del país: ",i+1,meses[j]);
-		s("%f",&centro[i]);
+		s("%f",&centro[j]);
 		}
 	}
 	system("cls");
-	for(i=0; i<anios; i++){
+	for(i=0;i<anios;i++){
 		for(j=0;j<12;j++){
 		p("\nLluvia caida en el año [%d] en el mes [%s] en el SUR del país: ",i+1,meses[j]);
-		s("%f",&sur[i]);
+		s("%f",&sur[j]);
 		}
 	}
+
 	
 	//Menu de consulta
 	
@@ -90,7 +90,9 @@ void centralMeteorologica(){
 				}
 				promedioC = sumaC/tiempo + .0;
 				p("\n\nEl promedio de la zona Centro es: %.2f [mm] de lluvia.\n\n",promedioC);
-				system("pause");
+				getchar();
+				p("\n\nPulsa enter para continuar...");
+				getchar();
 				promedioC =0;
 				sumaC=0;
 				break;
@@ -106,7 +108,9 @@ void centralMeteorologica(){
 					}
 				}
 				p("\n\nEl mes que tuvo menor lluvia en la zona Sur fue %s con %.2f [mm] de lluvia.\n\n",meses[mesS],menorS);
-				system("pause");
+				getchar();
+				p("\n\nPulsa enter para continuar...");
+				getchar();
 				break;
 			case 'C':
 				mayorN = norte[0]; //Valor del mes de enero
@@ -135,7 +139,9 @@ void centralMeteorologica(){
 				}else{
 					p("\n\nLa region con mayor lluvia anual es la region Sur con: %.2f [mm] de lluvia.\n\n",total_sur);
 				}
-				system("pause");
+				getchar();
+				p("\n\nPulsa enter para continuar...");
+				getchar();
 				total_norte=0;
 				total_centro=0;
 				total_sur=0;
@@ -144,20 +150,17 @@ void centralMeteorologica(){
 				break;	
 
 			case 'F':
-			    p("\n\nNorte    Centro    Sur")
+			    p("\n\nNorte    Centro    Sur");
 			    for(i=0;i<3;i++){
 					for(j=0;j<anios*12;j++){
-						if(i==1){
-							norte[j]);
-						}else if(i==2){
-							centro[j];
-						}else{
-							sur[j];
-						}
+						p("%.2f    %.2f    %.2f\n",norte[j],centro[j],sur[j]);
 					}
+					p("\n");
 
 				}
-				system("pause");
+				getchar();
+				p("\n\nPulsa enter para continuar...");
+				getchar();
 			    break;
 				
 				
@@ -167,7 +170,9 @@ void centralMeteorologica(){
 				exit(0);
 			default:
 				p("\n\nAviso: Opción invalida intentelo de nuevo\n\n");	
-				system("pause");
+				getchar();
+				p("\n\nPulsa enter para continuar...");
+				getchar();
 				break;	
 				
 				

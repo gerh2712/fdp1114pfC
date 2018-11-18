@@ -44,8 +44,8 @@ void menu(){
     p("\n\n\td) Salir");
     p("\n=> ");
     //fflush(stdin);
-    while(getchar()!='\n');
     s("%c", &decision);
+    while(getchar()!='\n');
     
 
     decision = toupper(decision);

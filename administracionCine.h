@@ -30,6 +30,7 @@ Análisis
 
 //Prototipo de función 
 void administracionCine();
+void mensajeTipoSala(char tipoSala, float precioTradicional, float precioNinos);
 void llenarMatriz(int sala[][asientos], int salaSize);
 
 
@@ -72,13 +73,13 @@ void administracionCine(){
 
             precioNinos = precioTradicional*0.60;
 
-            printf("\n\nHas seleccionado una sala tradicional, el precio por boleto de una sala tradicional es %.2f para adultos, y de %.2f para menores de edad", precioTradicional, precioNinos);
+            mensajeTipoSala(tipoSala, precioTradicional, precioNinos);
 
         }else {
 
             precioNinos = precio3D*0.60;
 
-            printf("\n\nHas seleccionado una sala 3D, el precio por boleto de una sala tradicional es %.2f para adultos, y de %.2f para menores de edad", precioTradicional, precioNinos);
+            mensajeTipoSala(tipoSala, precioTradicional, precioNinos);
 
         }
 
@@ -92,9 +93,36 @@ void administracionCine(){
 
 /*  Funciones   */
 
-//Llena un arreglo 
+//Mensaje para el tipo de sala 
+void mensajeTipoSala(char tipoSala, float precioTradicional, float precioNinos){
+
+    if(tipoSala=='A'){
+
+            printf("\n\nHas seleccionado una sala tradicional, el precio por boleto de una sala tradicional es %.2f para adultos, y de %.2f para menores de edad", precioTradicional, precioNinos);
+
+        }else {
+
+            printf("\n\nHas seleccionado una sala 3D, el precio por boleto de una sala tradicional es %.2f para adultos, y de %.2f para menores de edad", precioTradicional, precioNinos);
+
+        }
+
+}
+
+//Llena un una sala de cine (la setea) 
 void llenarMatriz(int sala[][asientos], int salaSize){
     int i, j;
+
+    for(i=0; i<salaSize; i++){
+        
+        for( j = 0; j < salaSize; j++){
+            
+            if(j=0){
+                sala[][] = A;
+            }
+
+        }
+        
+    }
 
 }
 

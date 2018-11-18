@@ -14,18 +14,18 @@ Análisis
 #define cls cls
 //Prototipo de función
 void calificacionAlumnos();
-float media(int calif[],int n);
-float varianza(int calif[],int n);
-float desviacion(int calif[],int n);
-float moda(int calif[],int n);
-void aprobados(int calif[],int n);
-void reprobados(int calif[],int n);
-void beca(int calif[],int n);
-void mostrarArreglo(calif[],n);
+float media(float calif[],int n);
+float varianza(float calif[],int n);
+float desviacion(float calif[],int n);
+float moda(float calif[],int n);
+void aprobados(float calif[],int n);
+void reprobados(float calif[],int n);
+void beca(float calif[],int n);
+void mostrarArreglo(float calif[],int n);
 //Ejecuta el programa 3
 void calificacionAlumnos(){
-    int i,j,calif[100],cntCal=0,cuenta[10],cntModa=0,n,numero,posicion,posicionM;
-	float promedio,varianzaT,numVarianza,desviacionT,modaT=0,newModa=0;
+    int i,j,cntCal=0,cuenta[10],cntModa=0,n,numero,posicion,posicionM;
+	float promedio,varianzaT,numVarianza,desviacionT,modaT=0,newModa=0,calif[100];
 	p("\nBienvenido, a partir de las calificaciones de estudiantes que hicieron el examen de ingreso a la Universidad, el programa nos dara informacion estadistica. \n ");
 	p("Ingrese cuantas calificaciones va a insertar\n");
     p("=> ");
@@ -37,7 +37,7 @@ void calificacionAlumnos(){
 		s("%d",&calif[i]);
 	}
     //Imprimir arreglo. 
-    
+    mostrarArreglo(calif,n);
 	//Calculo de la Media
 	promedio = media(calif,n);
 	p("\n El promedio de las calificaciones es: %.2f",promedio);
@@ -58,7 +58,7 @@ void calificacionAlumnos(){
     //Aspirantes a Beca
     beca(calif,n);
 }
-float media(int calif[],int n){
+float media(float calif[],int n){
 	int i;
 	float promedio,cntCal=0.0;
 	for(i=0;i<n;i++){
@@ -67,7 +67,7 @@ float media(int calif[],int n){
 	promedio = (cntCal/n);
 	return promedio;
 }
-float varianza(int calif[],int n){
+float varianza(float calif[],int n){
 	int i;
 	float varianza,numVarianza;
 	for(i=0;i<n;i++){
@@ -76,13 +76,13 @@ float varianza(int calif[],int n){
 	varianza= numVarianza/(n-1)+0.0;
 	return varianza;
 }
-float desviacion(int calif[],int n){
+float desviacion(float calif[],int n){
 	float desviacion;
 	desviacion = sqrt(varianza(calif,n));
 	return desviacion;
 }
 
-float moda(int calif[],int n){
+float moda(float calif[],int n){
 	int i,j, moda,pos;
 	int  mod[100];
     for (i=0;i<n;i++) {
@@ -117,7 +117,7 @@ float moda(int calif[],int n){
 	return calif[pos];
 }
 
-void aprobados(int calif[],int n){
+void aprobados(float calif[],int n){
 	int i,aprobados=0;
 	float porcentaje;
 	for(i=0;i<n;i++){
@@ -128,7 +128,7 @@ void aprobados(int calif[],int n){
 	porcentaje = (aprobados/n)*100+.0;
 	p("\n De los %d alumnos %d aprobaron, porcentaje de reprobados: %.2f\n",n,aprobados,porcentaje);
 }
-void reprobados(int calif[],int n){
+void reprobados(float calif[],int n){
 	int i,reprobados=0;
 	float porcentaje=0;
 	for(i=0;i<n;i++){
@@ -139,7 +139,7 @@ void reprobados(int calif[],int n){
 	porcentaje= (reprobados/n)*100+.0;
 	p("\n De los %d alumnos %d reprobaron, porcentaje de reprobados: %.2f\n",n,reprobados,porcentaje);
 }
-void beca(int calif[],int n){
+void beca(float calif[],int n){
 	int i,cntBeca=0;
 	for(i=0;i<n;i++){
 		if(calif[i]>=8 && calif[i]<=10){
@@ -148,9 +148,13 @@ void beca(int calif[],int n){
 	}
 	p("\n El numero de aspirantes a beca es de %d",cntBeca);
 }
-void mostrarArreglo(calif[],n){
+void mostrarArreglo(float calif[],int n){
     int i;
+    p("\n ");
+    p("[ ");
     for(i=0;i<n;i++){
-    	p("Valor %d del arreglo de cuenta: %d",i,calif[i]);
+    	p(" %.2f",i,calif[i]);
+        p(" , ");
     }
+    p(" ]");
 }
