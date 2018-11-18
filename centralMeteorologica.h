@@ -23,6 +23,7 @@ Análisis
 #define p printf
 #define s scanf
 #define cls cls
+#define tiempo 12
 
 void centralMeteorologica();
 
@@ -30,20 +31,20 @@ void centralMeteorologica();
 void centralMeteorologica(){
 
 	
-	int i,j,mesS,mesN,tiempo=12,anios=tiempo/12;
+	int i,j,mesS,mesN,anios=tiempo/12;
 	float norte[tiempo],centro[tiempo],sur[tiempo],sumaC=0,menorS,mayorN,total_norte=0,total_centro=0,total_sur=0;
 	char consulta,meses[12][20] = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
 	float promedioC;
 	
 	system(cleanScreen);
-	p("\n\n\tMeteorológico");
+	p("\n\n\tMeteorologico");
 	p("\n\nIngrese los datos que se piden: \n");
 	
 	//Guardado de datos
 	
 	for(i=0; i<anios; i++ ){
 		for(j=0;j<12;j++){
-			p("\nLluvia caida en el año [%d] en el mes [%s] en el NORTE del país: ",i+1,meses[j]);
+			p("\nLluvia caida en la temporada [%d] en el mes [%s] en el NORTE del pais: ",i+1,meses[j]);
 		    s("%f",&norte[j]);
 
 		}
@@ -52,14 +53,14 @@ void centralMeteorologica(){
 	system("cls");
 	for(i=0; i<anios; i++){
 		for(j=0;j<12;j++){
-		p("\nLluvia caida en el año [%d] en el mes [%s] en el CENTRO del país: ",i+1,meses[j]);
+		p("\nLluvia caida en la temporada [%d] en el mes [%s] en el CENTRO del pais: ",i+1,meses[j]);
 		s("%f",&centro[j]);
 		}
 	}
 	system("cls");
 	for(i=0;i<anios;i++){
 		for(j=0;j<12;j++){
-		p("\nLluvia caida en el año [%d] en el mes [%s] en el SUR del país: ",i+1,meses[j]);
+		p("\nLluvia caida en la temporada [%d] en el mes [%s] en el SUR del pais: ",i+1,meses[j]);
 		s("%f",&sur[j]);
 		}
 	}
@@ -69,13 +70,13 @@ void centralMeteorologica(){
 	
 	do{	
 		system("cls");
-		p("\n\n\t¿Qué información quiere consultar?: ");
+		p("\n\n\tMenu: ");
 		p("\n\na) El promedio anual de la región CENTRO.");
 		p("\nb) El mes y registro con menor lluvia en la región SUR.");
 		p("\nc) El mes y registro con mayor lluvia en la región NORTE.");
 		p("\nd) La región con mayor lluvia anual.");
 		p("\ne) Regresar al menu anterior.");
-		p("\nf)Mostrar tabla con todos los datos.");
+		p("\nf) Mostrar tabla con todos los datos.");
 		p("\ng) Salir.");
 		p("\n=> ");
 		fflush(stdin);
@@ -150,10 +151,10 @@ void centralMeteorologica(){
 				break;	
 
 			case 'F':
-			    p("\n\nNorte    Centro    Sur");
-			    for(i=0;i<3;i++){
-					for(j=0;j<anios*12;j++){
-						p("%.2f    %.2f    %.2f\n",norte[j],centro[j],sur[j]);
+			    p("\n\nNorte\t\tCentro\t\tSur\n\n\n");
+			    for(i=0;i<anios;i++){
+					for(j=0;j<12;j++){
+						p("%.2f [mm]\t%.2f [mm]\t%.2f [mm]\n\n",norte[j],centro[j],sur[j]);
 					}
 					p("\n");
 

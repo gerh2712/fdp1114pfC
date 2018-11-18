@@ -6,7 +6,7 @@
 #include <math.h>
 #include <locale.h>
 #include "centralMeteorologica.h"
-//#include "administracionCine.h"
+#include "administracionCine.h"
 //#include "calificacionAlumnos.h"
 
 //Constantes
@@ -57,7 +57,7 @@ void menu(){
             break;
         case 'B':
             system("cls");                
-            //administracionCine();
+            administracionCine();
             break;
 
         case 'C':

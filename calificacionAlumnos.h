@@ -9,6 +9,7 @@ Análisis
 //Define.
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
 #define p printf
 #define s scanf
 #define cls cls
@@ -157,4 +158,47 @@ void mostrarArreglo(float calif[],int n){
         p(" , ");
     }
     p(" ]");
+}
+void menuCalificaciones(){
+    int decision;
+    do{
+        p("\n¿Quiere ver algun dato en especifico?\n");
+        p("1.- Promedio\n2.-Varianza\n3.-Desviacion Estandar\n4.-Moda\n5.-Alumnos aprobados y reprobados\n6.- Aspirantes a Beca\n7.- Imprimir Calificaciones\n8.-Salir");
+        p("=>");
+        s("%d",decision);
+        switch(decision){
+            case 1:
+                promedio = media(calif,n);
+                p("\n El promedio de las calificaciones es: %.2f",promedio);
+                break;
+            case 2:
+                varianzaT= varianza(calif,n);
+                p("\n La varianza de las calificaciones es: %.2f",varianzaT);
+                break;
+            case 3:
+                desviacionT = desviacion(calif,n);
+                p("\n La Desviacion Estandar de las calificaciones es: %.2f",desviacionT);
+                break;
+            case 4:
+                moda(calif,n);
+                break;
+            case 5:
+                aprobados(calif,n);
+                reprobados(calif,n);
+                break;
+            case 6:
+                beca(calif,n);
+                break;
+            case 7:
+                mostrarArreglo(calif,n);
+                break;
+            case 8:
+                p("Saliendo del programa, retornando al menu.");
+                exit(0);
+                return (menu());
+                break;
+            default:
+                p("\nOpcion Invalida, inserte una opcion correcta");
+        }
+    }while(decision);
 }

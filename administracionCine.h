@@ -17,6 +17,7 @@ Análisis
         >Se pide que compren asientos hasta que las salas estén llenas
 
 */
+
 /*  Includes    */
 #include <stdio.h>
 #include <string.h>
@@ -31,7 +32,8 @@ Análisis
 //Prototipo de función 
 void administracionCine();
 void mensajeTipoSala(char tipoSala, float precioTradicional, float precioNinos);
-void llenarMatriz(int sala[][asientos], int salaSize);
+void llenarMatriz(int sala[][4], int size, char abc[], int abcSize);
+void mostrarMatriz(int sala[][4], int size);
 
 
 
@@ -43,10 +45,14 @@ void administracionCine(){
     #define precioTradicional 50
     #define precio3D 100
 
-    int salaTradicional[asientos][asientos], sala3D[asientos][asientos], numBoletos, numBAdultos, numBNinos;
+    int salaTradicional[asientos][asientos]={0}, sala3D[asientos][asientos]={0}, numBoletos, numBAdultos, numBNinos;
     float precioNinos;
     char tipoSala;
+    char abc[26]={'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+    
+    llenarMatriz(salaTradicional, asientos, abc, 26);
 
+    mostrarMatriz(salaTradicional, asientos);
 
     //Ciclo que obliga a que se llenen las salas 
     do
@@ -56,7 +62,7 @@ void administracionCine(){
         do
         {
             printf("\n\nBienvenido, ¿quieres comprar boletos para una sala tradicional o una sala 3D?");
-            printf("\n\na)Tradicional\tb)3D\t:  ");
+            printf("\n\n\ta)Tradicional\tb)3D\t:  ");
             scanf("%c", &tipoSala);
             while(getchar()!='\n');
             tipoSala = toupper(tipoSala);
@@ -94,7 +100,7 @@ void administracionCine(){
 /*  Funciones   */
 
 //Mensaje para el tipo de sala 
-void mensajeTipoSala(char tipoSala, float precioTradicional, float precioNinos){
+void mensajeTipoSala(char tipoSala, float precio, float precioNinos){
 
     if(tipoSala=='A'){
 
@@ -109,22 +115,54 @@ void mensajeTipoSala(char tipoSala, float precioTradicional, float precioNinos){
 }
 
 //Llena un una sala de cine (la setea) 
-void llenarMatriz(int sala[][asientos], int salaSize){
+void llenarMatriz(int sala[][4], int size, char abc[], int abcSize){
+
     int i, j;
 
-    for(i=0; i<salaSize; i++){
+    //Llena la columna 0 con abc... 
+    for(i=0; i<size; i++){
         
-        for( j = 0; j < salaSize; j++){
+        for( j = 0; j < size; j++){
             
             if(j=0){
-                sala[][] = A;
+                sala[i][0] = abc[i];
             }
 
         }
         
     }
 
+    //Llena la fila 0 con 1 2 3 ...s
+    for(j=0; j<asientos; j++){
+        
+        for(i=0; i< asientos; i++){
+            
+            if(i=0){
+                sala[0][j] = j+1;
+            }
+
+        }
+        
+    }
+
+    return administracionCine();
+
 }
 
-
 //Muestra una Matriz 
+void mostrarMatriz(int sala[][4], int size){
+    int i, j;
+
+    for(i=0; i<size; i++){
+        for(j=0; i<size; j++){
+            if(j=0){
+                printf("%c", j);
+            }else {
+                printf("%i", j);
+            }
+        }
+    }
+
+    return administracionCine();
+
+}
