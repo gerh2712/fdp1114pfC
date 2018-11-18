@@ -12,6 +12,8 @@
 //Constantes
 #define p printf
 #define s scanf
+//Define
+#define cls cls
 
 //Prototipo de funciones
 void menu();
@@ -41,7 +43,8 @@ void menu(){
     p("\n\n\tc) Calificaciones alumnos");
     p("\n\n\td) Salir");
     p("\n=> ");
-    fflush(stdin);
+    //fflush(stdin);
+    while(getchar()!='\n');
     s("%c", &decision);
     
 
@@ -59,7 +62,7 @@ void menu(){
 
         case 'C':
             system("cls");
-            //calificacionAlumnos();
+           // calificacionAlumnos();
             break;
         case 'D':
             system("cls");

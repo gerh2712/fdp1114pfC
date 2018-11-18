@@ -25,6 +25,9 @@ Análisis
 #include <math.h>
 #include <locale.h>
 
+//Define
+#define cls cls
+
 //Prototipo de función 
 void administracionCine();
 void llenarMatriz(int sala[][asientos], int salaSize);
@@ -35,17 +38,51 @@ void llenarMatriz(int sala[][asientos], int salaSize);
 void administracionCine(){
 
     //Variables y Defines
-
     #define asientos 4
     #define precioTradicional 50
     #define precio3D 100
 
-    int salaTradicional[asientos][asientos], sala3D[asientos][asientos];
+    int salaTradicional[asientos][asientos], sala3D[asientos][asientos], numBoletos, numBAdultos, numBNinos;
+    float precioNinos;
+    char tipoSala;
 
 
     //Ciclo que obliga a que se llenen las salas 
     do
     {
+        
+        //Pregunta el tipo de sala que para la cual quiere adquirir boletes
+        do
+        {
+            printf("\n\nBienvenido, ¿quieres comprar boletos para una sala tradicional o una sala 3D?");
+            printf("\n\na)Tradicional\tb)3D\t:  ");
+            scanf("%c", &tipoSala);
+            while(getchar()!='\n');
+            tipoSala = toupper(tipoSala);
+
+            if(tipoSala!='A' && tipoSala!='B'){
+                system("cls");
+                printf("\n\nPor favor escoge una opción válida...");
+            }
+
+        } while (tipoSala!='A' && tipoSala!='B');
+
+        //Según el tipo de sala 
+        if(tipoSala=='A'){
+
+            precioNinos = precioTradicional*0.60;
+
+            printf("\n\nHas seleccionado una sala tradicional, el precio por boleto de una sala tradicional es %.2f para adultos, y de %.2f para menores de edad", precioTradicional, precioNinos);
+
+        }else {
+
+            precioNinos = precio3D*0.60;
+
+            printf("\n\nHas seleccionado una sala 3D, el precio por boleto de una sala tradicional es %.2f para adultos, y de %.2f para menores de edad", precioTradicional, precioNinos);
+
+        }
+
+        
         
     } while (1);
     
@@ -62,4 +99,4 @@ void llenarMatriz(int sala[][asientos], int salaSize){
 }
 
 
-//Muestra un arreglo 
+//Muestra una Matriz 

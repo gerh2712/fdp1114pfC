@@ -11,6 +11,7 @@ Análisis
 #include <math.h>
 #define p printf
 #define s scanf
+#define cls cls
 //Prototipo de función
 void calificacionAlumnos();
 float media(int calif[],int n);
@@ -20,20 +21,23 @@ float moda(int calif[],int n);
 void aprobados(int calif[],int n);
 void reprobados(int calif[],int n);
 void beca(int calif[],int n);
+void mostrarArreglo(calif[],n);
 //Ejecuta el programa 3
 void calificacionAlumnos(){
     int i,j,calif[100],cntCal=0,cuenta[10],cntModa=0,n,numero,posicion,posicionM;
 	float promedio,varianzaT,numVarianza,desviacionT,modaT=0,newModa=0;
-	p("\nBienvenido, a partir de las calificaciones de estudiantes que hicieron el examen de ingreso a la Universidad, nos dara informacion estadistica \n ");
-	p("Ingrese cuantas calificaciones va a insertar");
+	p("\nBienvenido, a partir de las calificaciones de estudiantes que hicieron el examen de ingreso a la Universidad, el programa nos dara informacion estadistica. \n ");
+	p("Ingrese cuantas calificaciones va a insertar\n");
+    p("=> ");
 	s("%d",&n);
 	p("\nIngrese las calificaciones de los Alumnos: ");
 	
 	for(i=0;i<n;i++){
-		p("\n Calificacion %d: ",i+1);
+		p("\n Calificacion del alumno %d: ",i+1);
 		s("%d",&calif[i]);
 	}
-
+    //Imprimir arreglo. 
+    
 	//Calculo de la Media
 	promedio = media(calif,n);
 	p("\n El promedio de las calificaciones es: %.2f",promedio);
@@ -93,16 +97,17 @@ float moda(int calif[],int n){
     for (i=1 ; i<n ; i++){
         for (j=1 ;j<n;j++){
             if(calif[i]!=calif[j]){
-
+                if (mod[i]>=mod[j]){
+            	    pos=i;
+            	    moda=1;
+          	    }    
             }
-            if (mod[i]>=mod[j]){
-            	pos=i;
-            	moda=1;
-          	}      
+              
         } 
     }
     if(moda==1){
-    	p("\nExiste moda y es %d ".calif[pos]);
+    	p("\nExiste moda y es %d ",
+        calif[pos]);
     }else{
     	p("\nNo existe moda ");
     }
@@ -142,4 +147,10 @@ void beca(int calif[],int n){
 		}
 	}
 	p("\n El numero de aspirantes a beca es de %d",cntBeca);
+}
+void mostrarArreglo(calif[],n){
+    int i;
+    for(i=0;i<n;i++){
+    	p("Valor %d del arreglo de cuenta: %d",i,calif[i]);
+    }
 }

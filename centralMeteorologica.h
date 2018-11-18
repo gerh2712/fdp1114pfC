@@ -2,9 +2,12 @@
 Programa 1	Central Meteorológica
 
 Análisis
-    Entradas: 
-    Salidas
-    Restricciones
+    Entradas: Registros de lluvias en la zona norte,centro y sur
+    Salidas: Promedio anua lde la region centro
+	         Registro con menor lluvia en la region sur
+			 Mes y registro con mayor lluvia en la region norte
+			 y la region con mayor lluvia anual
+    Restricciones: Solo se aceptan datos mayores de cero
 */
 
 //TODO: CAMBIAR VARIABLES POR CONSTANTES PARA LOS ARREGLOS
@@ -14,11 +17,13 @@ Análisis
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
+#define cleanScreen "cls"
 
 //Constantes
 #define p printf
 #define s scanf
 #define tiempo 12
+#define cls cls
 
 void centralMeteorologica();
 
@@ -31,7 +36,7 @@ void centralMeteorologica(){
 	char consulta,meses[12][20] = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
 	float promedioC;
 	
-	system("cls");
+	system(cleanScreen);
 	p("\n\n\tMeteorológico");
 	p("\n\nIngrese los datos que se piden: \n");
 	
@@ -46,15 +51,18 @@ void centralMeteorologica(){
     }
     
 	system("cls");
-	for(i=0; i<tiempo; i++){
-		p("\nLluvia caida en el centro en el mes de %s es: ",meses[i]);
+	for(i=0; i<anios; i++){
+		for(j=0;j<12;j++){
+		p("\nLluvia caida en el año [%d] en el mes [%s] en el CENTRO del país: ",i+1,meses[j]);
 		s("%f",&centro[i]);
+		}
 	}
 	system("cls");
-	for(i=0; i<tiempo; i++){
-		p("\nLluvia caida en el sur en el mes de %s es: ",meses[i]);
+	for(i=0; i<anios; i++){
+		for(j=0;j<12;j++){
+		p("\nLluvia caida en el año [%d] en el mes [%s] en el SUR del país: ",i+1,meses[j]);
 		s("%f",&sur[i]);
-		    
+		}
 	}
 	
 	//Menu de consulta
@@ -67,7 +75,8 @@ void centralMeteorologica(){
 		p("\nc) El mes y registro con mayor lluvia en la región NORTE.");
 		p("\nd) La región con mayor lluvia anual.");
 		p("\ne) Regresar al menu anterior.");
-		p("\nf) Salir.");
+		p("\nf)Mostrar tabla con todos los datos.");
+		p("\ng) Salir.");
 		p("\n=> ");
 		fflush(stdin);
 		s("%c",&consulta);
@@ -133,9 +142,26 @@ void centralMeteorologica(){
 				break;	
 			case 'E':
 				break;	
-				
-				
+
 			case 'F':
+			    p("\n\nNorte    Centro    Sur")
+			    for(i=0;i<3;i++){
+					for(j=0;j<anios*12;j++){
+						if(i==1){
+							norte[j]);
+						}else if(i==2){
+							centro[j];
+						}else{
+							sur[j];
+						}
+					}
+
+				}
+				system("pause");
+			    break;
+				
+				
+			case 'G':
 				system("cls");
 				p("\n\nGracias por usar el programa hasta luego :D");
 				exit(0);
