@@ -2,7 +2,7 @@
 Programa 1	Central Meteorológica
 
 Análisis
-    Entradas
+    Entradas: 
     Salidas
     Restricciones
 */
@@ -18,6 +18,7 @@ Análisis
 //Constantes
 #define p printf
 #define s scanf
+#define tiempo 12
 
 void centralMeteorologica();
 
@@ -25,7 +26,7 @@ void centralMeteorologica();
 void centralMeteorologica(){
 
 	
-	int i,mesS,mesN,tiempo=12;
+	int i,j,mesS,mesN,anios=tiempo/12;
 	float norte[tiempo],centro[tiempo],sur[tiempo],sumaC=0,menorS,mayorN,total_norte=0,total_centro=0,total_sur=0;
 	char consulta,meses[12][20] = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
 	float promedioC;
@@ -36,9 +37,12 @@ void centralMeteorologica(){
 	
 	//Guardado de datos
 	
-	for(i=0; i<tiempo; i++ ){
-		    p("\nLluvia caida en el norte en el mes de  %s es: ",meses[i]);
+	for(i=0; i<anios; i++ ){
+		for(j=0;j<12;j++){
+			p("\nLluvia caida en el año [%d] en el mes [%s] en el NORTE del país: ",i+1,meses[j]);
 		    s("%f",&norte[i]);
+
+		}
     }
     
 	system("cls");

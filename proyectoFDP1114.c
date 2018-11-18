@@ -1,13 +1,13 @@
-
 //Includes
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include <math.h>
 #include <locale.h>
 #include "centralMeteorologica.h"
-#include "administracionCine.h"
-#include "calificacionAlumnos.h"
+//#include "administracionCine.h"
+//#include "calificacionAlumnos.h"
 
 //Constantes
 #define p printf
@@ -54,12 +54,12 @@ void menu(){
             break;
         case 'B':
             system("cls");                
-            administracionCine();
+            //administracionCine();
             break;
 
         case 'C':
             system("cls");
-            calificacionAlumnos();
+            //calificacionAlumnos();
             break;
         case 'D':
             system("cls");
