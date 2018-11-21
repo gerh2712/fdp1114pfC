@@ -13,7 +13,7 @@
 #define p printf
 #define s scanf
 //Define
-#define cls cls
+#define cls "clear"
 
 //Prototipo de funciones
 void menu();
@@ -35,7 +35,7 @@ void menu(){
     char decision;
     
     do{
-    system("cls");
+    system(cls);
     //Menú que muestra las opciones de los distintos programas
     p("\n\nBienvenido");
     p("\n\n\ta) Central Meteorologica de Mexico");
@@ -52,20 +52,20 @@ void menu(){
 
     switch (decision){
         case 'A':
-            system("cls");
+            system(cls);
             centralMeteorologica();
             break;
         case 'B':
-            system("cls");                
+            system(cls);              
             administracionCine();
             break;
 
         case 'C':
-            system("cls");
+            system(cls);
            // calificacionAlumnos();
             break;
         case 'D':
-            system("cls");
+            system(cls);
             p("\n\nGracias por usar el programa :D\n\n");
             exit(0);
         default:
