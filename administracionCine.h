@@ -340,6 +340,8 @@ void administracionCine()
     printf("\n\n\nAhora regresaremos al menú principal (escoger un programa)...");
 
     systemPause();
+
+    return(menu());
 }
 
 /*  Funciones   */
