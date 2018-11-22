@@ -7,13 +7,13 @@
 #include <locale.h>
 #include "centralMeteorologica.h"
 #include "administracionCine.h"
-//#include "calificacionAlumnos.h"
+#include "calificacionAlumnos.h"
 
 //Constantes
 #define p printf
 #define s scanf
 //Define
-#define cls cls
+#define cls "cls"
 
 //Prototipo de funciones
 void menu();
@@ -35,7 +35,7 @@ void menu(){
     char decision;
     
     do{
-    system("cls");
+    system(cls);
     //Menú que muestra las opciones de los distintos programas
     p("\n\nBienvenido");
     p("\n\n\ta) Central Meteorologica de Mexico");
@@ -52,25 +52,24 @@ void menu(){
 
     switch (decision){
         case 'A':
-            system("cls");
+            system(cls);
             centralMeteorologica();
             break;
         case 'B':
-            system("cls");                
+            system(cls);                
             administracionCine();
             break;
 
         case 'C':
-            system("cls");
-           // calificacionAlumnos();
+            system(cls);
+            calificacionAlumnos();
             break;
         case 'D':
-            system("cls");
+            system(cls);
             p("\n\nGracias por usar el programa :D\n\n");
             exit(0);
         default:
-            p("\n\nParece que no has introducido una opción válida, intenta de nuevo\n\n");
-			getchar();
+            p("\n\nParece que no has introducido una opcion valida, intenta de nuevo\n\n");
 			p("\n\nPulsa enter para continuar...");
 			getchar();
         }

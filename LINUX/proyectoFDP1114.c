@@ -6,7 +6,7 @@
 #include <math.h>
 #include <locale.h>
 #include "centralMeteorologica.h"
-#include "administracionCine.h"
+//#include "administracionCine.h"
 //#include "calificacionAlumnos.h"
 
 //Constantes
@@ -57,19 +57,19 @@ void menu(){
             break;
         case 'B':
             system(cls);              
-            administracionCine();
+            //administracionCine();
             break;
 
         case 'C':
             system(cls);
-           // calificacionAlumnos();
+            calificacionAlumnos();
             break;
         case 'D':
             system(cls);
             p("\n\nGracias por usar el programa :D\n\n");
             exit(0);
         default:
-            p("\n\nParece que no has introducido una opción válida, intenta de nuevo\n\n");
+            p("\n\nParece que no has introducido una opción valida, intenta de nuevo\n\n");
 			getchar();
 			p("\n\nPulsa enter para continuar...");
 			getchar();
