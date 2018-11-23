@@ -20,7 +20,7 @@ Análisis
 //Constantes
 #define p printf
 #define s scanf
-#define cls "cls"
+#define cls "clear"
 
 void centralMeteorologica();
 
@@ -57,7 +57,7 @@ void centralMeteorologica(){
 
 	
 	//Menu de consulta
-	
+	while(getchar()!='\n');
 	do{	
 		system(cls);
 		p("\n\n\tMenu: ");
@@ -69,8 +69,9 @@ void centralMeteorologica(){
 		p("\nf) Regresar al menu anterior.");
 		p("\ng) Salir.");
 		p("\n=> ");
-		fflush(stdin);
+		
 		s("%c",&consulta);
+		while(getchar()!='\n');
 		
 		consulta = toupper(consulta);
 		
@@ -113,7 +114,9 @@ void centralMeteorologica(){
 					}
 				}
 				p("\n\nEl mes que tuvo mayor lluvia en la zona Norte fue %s con %.2f [mm] de lluvia.\n\n",meses[mesN],mayorN);
-				system("pause");
+				getchar();
+				p("\n\nPulsa enter para continuar...");
+				getchar();
 				break;
 			case 'D':
 				for(i=0;i<12;i++){
@@ -182,7 +185,7 @@ void centralMeteorologica(){
 	
 
 	if(consulta == 'F'){
-	    system("cls");
+	    system(cls);
 		while(getchar()!='\n');
 	    return(menu());
 	}

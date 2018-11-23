@@ -20,7 +20,7 @@ Análisis
 //Constantes
 #define p printf
 #define s scanf
-#define cls "cls"
+#define cls "clear"
 
 void centralMeteorologica();
 
@@ -69,8 +69,8 @@ void centralMeteorologica(){
 		p("\nf) Regresar al menu anterior.");
 		p("\ng) Salir.");
 		p("\n=> ");
-		fflush(stdin);
 		s("%c",&consulta);
+		while(getchar()!='\n');
 		
 		consulta = toupper(consulta);
 		
@@ -80,7 +80,7 @@ void centralMeteorologica(){
 					sumaC += centro[i];
 				}
 				promedioC = sumaC/12.0;
-				p("\n\nEl promedio de la zona CENTRO es: %.2f [mm] de lluvia.\n\n",promedioC);
+				p("\n\nEl promedio de la zona Centro es: %.2f [mm] de lluvia.\n\n",promedioC);
 				getchar();
 				p("\n\nPulsa enter para continuar...");
 				getchar();
@@ -98,7 +98,7 @@ void centralMeteorologica(){
 						mesS = i;
 					}
 				}
-				p("\n\nEl mes que tuvo menor lluvia en la zona SUR fue %s con %.2f [mm] de lluvia.\n\n",meses[mesS],menorS);
+				p("\n\nEl mes que tuvo menor lluvia en la zona Sur fue %s con %.2f [mm] de lluvia.\n\n",meses[mesS],menorS);
 				getchar();
 				p("\n\nPulsa enter para continuar...");
 				getchar();
@@ -112,8 +112,10 @@ void centralMeteorologica(){
 						mesN = i;
 					}
 				}
-				p("\n\nEl mes que tuvo mayor lluvia en la zona NORTE fue %s con %.2f [mm] de lluvia.\n\n",meses[mesN],mayorN);
-				system("pause");
+				p("\n\nEl mes que tuvo mayor lluvia en la zona Norte fue %s con %.2f [mm] de lluvia.\n\n",meses[mesN],mayorN);
+				getchar();
+				p("\n\nPulsa enter para continuar...");
+				getchar();
 				break;
 			case 'D':
 				for(i=0;i<12;i++){
@@ -124,11 +126,11 @@ void centralMeteorologica(){
 				if(total_norte== total_centro && total_norte == total_sur){
 					p("\n\nLas tres regiones tuvieron la misma cantidad de lluvia anual de %.2f [mm] de lluvia.\n\n",total_sur);
 				}else if(total_norte > total_centro && total_norte > total_sur){
-					p("\n\nLa region con mayor lluvia anual es la region NORTE con: %.2f [mm] de lluvia.\n\n",total_norte);
+					p("\n\nLa region con mayor lluvia anual es la region Norte con: %.2f [mm] de lluvia.\n\n",total_norte);
 				}else if (total_centro > total_sur){
-					p("\n\nLa region con mayor lluvia anual es la region CENTRO con: %.2f [mm] de lluvia.\n\n",total_centro);		
+					p("\n\nLa region con mayor lluvia anual es la region Centro con: %.2f [mm] de lluvia.\n\n",total_centro);		
 				}else{
-					p("\n\nLa region con mayor lluvia anual es la region SUR con: %.2f [mm] de lluvia.\n\n",total_sur);
+					p("\n\nLa region con mayor lluvia anual es la region Sur con: %.2f [mm] de lluvia.\n\n",total_sur);
 				}
 				getchar();
 				p("\n\nPulsa enter para continuar...");
@@ -182,7 +184,7 @@ void centralMeteorologica(){
 	
 
 	if(consulta == 'F'){
-	    system("cls");
+	    system(cls);
 		while(getchar()!='\n');
 	    return(menu());
 	}
