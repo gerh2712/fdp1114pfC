@@ -27,7 +27,7 @@ Análisis
 #include <locale.h>
 
 /*  Defines */
-#define cls "clear"
+#define cls "cls"
 #define asientos 3
 
 /*  Prototipos  */

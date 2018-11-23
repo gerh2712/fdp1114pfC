@@ -1,245 +1,194 @@
 /*
-Programa 3
-
+Programa 1	Central Meteorológica
 Análisis
-    Entradas: El arreglo que contiene las calificaciones
-    Salidas: Media aritmetica,Varianza,Desviacion Estandar,Moda,Alumnos reprobados y aprobados(Cantidad y porcentaje),Aspirantes a Beca.
-    Restricciones: Solamente numeros enteros del 0 al 10
+    Entradas: Registros de lluvias en la zona norte,centro y sur
+    Salidas: Promedio anua lde la region centro
+	         Registro con menor lluvia en la region sur
+			 Mes y registro con mayor lluvia en la region norte
+			 y la region con mayor lluvia anual
+    Restricciones: Solo se aceptan datos mayores de cero
 */
-//Define.
+
+//TODO: CAMBIAR VARIABLES POR CONSTANTES PARA LOS ARREGLOS
+
+//Includes
 #include <stdio.h>
-#include <math.h>
+#include <string.h>
+#include <ctype.h>
 #include <stdlib.h>
+
+//Constantes
 #define p printf
 #define s scanf
 #define cls "cls"
-//Prototipo de función
-void calificacionAlumnos();
-float media(float calif[],int n);
-float varianza(float calif[],int n);
-float desviacion(float varianza);
-float moda(float calif[],int n);
-void aprobados(float calif[],int n);
-void reprobados(float calif[],int n);
-void beca(float calif[],int n);
-void mostrarArreglo(float calif[],int n);
-void menuCalificaciones(float calif[],int n);
-//Ejecuta el programa 3
-void calificacionAlumnos(){
-    int i,j,cntCal=0,cuenta[10],cntModa=0,n,numero,posicion,posicionM;
-	float promedio=0,varianzaT=0,numVarianza=0,desviacionT=0,modaT=0,newModa=0,calif[100];
-	p("\nBienvenido, a partir de las calificaciones de estudiantes que hicieron el examen de ingreso a la Universidad, el programa nos dara informacion estadistica. \n ");
-	p("Ingrese cuantas calificaciones va a insertar\n");
-    p("=> ");
-	s("%d",&n);
-	p("\nIngrese las calificaciones de los Alumnos: ");
+
+void centralMeteorologica();
+
+//Ejecuta el programa 1
+void centralMeteorologica(){
+
 	
-	for(i=0;i<n;i++){
-		p("\n Calificacion del alumno %d: ",i+1);
-		s("%f",&calif[i]);
-	}
+	int i,j,mesS,mesN;
+	float norte[12],centro[12],sur[12],sumaC=0,menorS,mayorN,total_norte=0,total_centro=0,total_sur=0;
+	char consulta,meses[12][20] = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
+	float promedioC;
+	
 	system(cls);
-    //Imprimir arreglo. 
-    mostrarArreglo(calif,n);
-	//Calculo de la Media
-	promedio = media(calif,n);
-	p("\n El promedio de las calificaciones es: \t %.2f",promedio);
-	//Calculo de Varianza
-	varianzaT= varianza(calif,n);
-	p("\n La varianza de las calificaciones es: \t %.2f",varianzaT);
-	//Calculo de Desviacion Estandar
-	desviacionT = desviacion(varianzaT);
-	p("\n La Desviacion Estandar de las calificaciones es: \t %.2f",desviacionT);
-	//Calculo de la Moda
-    moda(calif,n);
-	//modaT = moda(calif,n);
-    //p("\nLa moda es: %.2f",modaT);
+	p("\n\n\tMeteorologico");
+	p("\n\nIngrese los datos que se piden: \n");
+	
+	//Guardado de datos
+	
+		for(i=0;i<12;i++){
+			p("\nLluvia caida en el mes de [%s] en el NORTE del pais: ",meses[i]);
+		    s("%f",&norte[i]);
+		}
     
-    //Alumnos aprobados y reprobados
-    aprobados(calif,n);
-    reprobados(calif,n);
-    //Aspirantes a Beca
-    beca(calif,n);
-	getchar();
-	p("\n\nPulsa enter para continuar...");
-	getchar();
+	system(cls);
+		for(i=0;i<12;i++){
+			p("\nLluvia caida en el mes de [%s] en el CENTRO del pais: ",meses[i]);
+		    s("%f",&centro[i]);
+		}
+	system(cls);
+		for(i=0;i<12;i++){
+			p("\nLluvia caida en el mes de [%s] en el SUR del pais: ",meses[i]);
+		    s("%f",&sur[i]);
+		}
 
-	menuCalificaciones(calif,n);
-}
-float media(float calif[],int n){
-	int i;
-	float promedio,cntCal=0.0;
-	for(i=0;i<n;i++){
-		cntCal+=calif[i];
-	}
-	promedio = (cntCal/n);
-	return promedio;
-}
-float varianza(float calif[],int n){
-	int i;
-	float varianza,numVarianza=0;
-	for(i=0;i<n;i++){
-		numVarianza+=pow(calif[i]-media(calif,n),2);
-	}
-	varianza= numVarianza/(n-1)+0.0;
-	return varianza;
-}
-float desviacion(float varianza){
-	float desviacion;
-	desviacion = sqrt(varianza);
-	return desviacion;
-}
-
-float moda(float calif[],int n){
-	int i,j, moda=0,valorModa,modaFinal,lugar;
-	int  mod[100];
-	float pos;
-	for(i=0;i<n;i++){
-		mod[i] =0;
-		for(j=0;j<n;j++){
-			if(calif[i]==calif[j]){
-				mod[i]= mod[i]+1;
-			}
-		}
-		
-	}
-/*	for(i=0;i<n;i++){
-		p("Valor %d es %d",i,mod[i]);
-	}*/
-	//Hasta aqui me parece esta bien
-	moda=0;
-	for(i=0;i<n;i++){
-		if(mod[i]>moda){
-			moda = mod[i];
-			pos= calif[i];
-			lugar=i;
-			valorModa=1;
-		}else if (mod[i]==moda && calif[i]!=pos){
-			valorModa=0;
-		}
-	}
-	if(valorModa==1){
-		modaFinal = lugar;
-		p("\n La moda es: \t %.2f",pos);
-		
-	}else if (valorModa==0){
-		p("\n No existe moda");
-	}
-	return calif[modaFinal];
-}
-
-void aprobados(float calif[],int n){
-	int i,aprobados=0;
-	float porcentaje;
-	for(i=0;i<n;i++){
-		if(calif[i]>=6 && calif[i]<=10){
-			aprobados++;
-		}
-	}
-	porcentaje = (aprobados/(n*1.0))*100.0;
-	p("\n De los %d alumnos %d aprobaron, porcentaje de reprobados: \t %.2f\n",n,aprobados,porcentaje);
-}
-void reprobados(float calif[],int n){
-	int i,reprobados=0;
-	float porcentaje=0;
-	for(i=0;i<n;i++){
-		if(calif[i]<6 && calif[i]>=0){
-			reprobados++;
-		}
-	}
-	porcentaje= (reprobados/(n*1.0))*100.0;
-	p("\n De los %d alumnos %d reprobaron, porcentaje de reprobados: \t %.2f\n",n,reprobados,porcentaje);
-}
-void beca(float calif[],int n){
-	int i,cntBeca=0;
-	for(i=0;i<n;i++){
-		if(calif[i]>=8 && calif[i]<=10){
-			cntBeca++;
-		}
-	}
-	p("\n El numero de aspirantes a beca es de: \t %d",cntBeca);
-}
-void mostrarArreglo(float calif[],int n){
-    int i;
-    p("\n ");
-    p("[ ");
-    for(i=0;i<n;i++){
-    	p(" %.2f",calif[i]);
-        p(" , ");
-    }
-    p(" ]");
-}
-void menuCalificaciones(float calif[], int n){
-    int decision;
-    int i,j,cntCal=0,cuenta[10],cntModa=0,numero,posicion,posicionM;
-	float promedio=0,varianzaT=0,numVarianza=0,desviacionT=0,modaT=0,newModa=0;
-    do{
+	
+	//Menu de consulta
+	while(getchar()!='\n');
+	do{	
 		system(cls);
-        p("\n¿Quiere ver algun dato en especifico?\n");
-        p("1.- Promedio\n2.- Varianza\n3.- Desviacion Estandar\n4.- Moda\n5.- Alumnos aprobados y reprobados\n6.- Aspirantes a Beca\n7.- Imprimir Calificaciones\n8.- Salir");
-        p("=>");
-        s("%d",&decision);
-        switch(decision){
-            case 1:
-                promedio = media(calif,n);
-                p("\n El promedio de las calificaciones es: %.2f",promedio);
+		p("\n\n\tMenu: ");
+		p("\n\na) El promedio anual de la region CENTRO.");
+		p("\nb) El mes y registro con menor lluvia en la region SUR.");
+		p("\nc) El mes y registro con mayor lluvia en la region NORTE.");
+		p("\nd) La region con mayor lluvia anual.");
+		p("\ne) Mostrar tabla con todos los datos.");
+		p("\nf) Regresar al menu anterior.");
+		p("\ng) Salir.");
+		p("\n=> ");
+		
+		s("%c",&consulta);
+		while(getchar()!='\n');
+		
+		consulta = toupper(consulta);
+		
+		switch(consulta){
+			case 'A':
+				for(i=0;i<12;i++){
+					sumaC += centro[i];
+				}
+				promedioC = sumaC/12.0;
+				p("\n\nEl promedio de la zona Centro es: %.2f [mm] de lluvia.\n\n",promedioC);
 				getchar();
 				p("\n\nPulsa enter para continuar...");
 				getchar();
-                break;
+				promedioC =0;
+				sumaC=0;
+				break;
+			case 'B':
+				menorS = sur[0]; // Valor del mes de enero
+				mesS=0; // Numero de mes
 
-            case 2:
-                varianzaT= varianza(calif,n);
-                p("\n La varianza de las calificaciones es: %.2f",varianzaT);
-                getchar();
+				//Compara con cada elemento del arreglo
+				for(i=1;i<12;i++){
+					if (menorS > sur[i]){
+						menorS = sur[i];
+						mesS = i;
+					}
+				}
+				p("\n\nEl mes que tuvo menor lluvia en la zona Sur fue %s con %.2f [mm] de lluvia.\n\n",meses[mesS],menorS);
+				getchar();
 				p("\n\nPulsa enter para continuar...");
 				getchar();
 				break;
-            case 3:
-                desviacionT = desviacion(varianzaT);
-                p("\n La Desviacion Estandar de las calificaciones es: %.2f",desviacionT);
+			case 'C':
+				mayorN = norte[0]; //Valor del mes de enero
+				mesN=0; //Mes de enero
+				for(i=1;i<12;i++){
+					if (norte[i] > mayorN){
+						mayorN = norte[i];
+						mesN = i;
+					}
+				}
+				p("\n\nEl mes que tuvo mayor lluvia en la zona Norte fue %s con %.2f [mm] de lluvia.\n\n",meses[mesN],mayorN);
 				getchar();
 				p("\n\nPulsa enter para continuar...");
 				getchar();
-                break;
-            case 4:
-                moda(calif,n);
+				break;
+			case 'D':
+				for(i=0;i<12;i++){
+					total_norte += norte[i];
+					total_centro += centro[i];
+					total_sur += sur[i]; 
+				}
+				if(total_norte== total_centro && total_norte == total_sur){
+					p("\n\nLas tres regiones tuvieron la misma cantidad de lluvia anual de %.2f [mm] de lluvia.\n\n",total_sur);
+				}else if(total_norte > total_centro && total_norte > total_sur){
+					p("\n\nLa region con mayor lluvia anual es la region Norte con: %.2f [mm] de lluvia.\n\n",total_norte);
+				}else if (total_centro > total_sur){
+					p("\n\nLa region con mayor lluvia anual es la region Centro con: %.2f [mm] de lluvia.\n\n",total_centro);		
+				}else{
+					p("\n\nLa region con mayor lluvia anual es la region Sur con: %.2f [mm] de lluvia.\n\n",total_sur);
+				}
 				getchar();
 				p("\n\nPulsa enter para continuar...");
 				getchar();
-                break;
-            case 5:
-                aprobados(calif,n);
-                reprobados(calif,n);
-				getchar();
-				p("\n\nPulsa enter para continuar...");
-				getchar();
-                break;
-            case 6:
-                beca(calif,n);
-				getchar();
-				p("\n\nPulsa enter para continuar...");
-				getchar();
-                break;
-            case 7:
-                mostrarArreglo(calif,n);
-				getchar();
-				p("\n\nPulsa enter para continuar...");
-				getchar();
-                break;
-            case 8:
-                p("Saliendo del programa, retornando al menu.");
-				getchar();
-				p("\n\nPulsa enter para continuar...");
-				getchar();
-                return(menu());
+				total_norte=0;
+				total_centro=0;
+				total_sur=0;
+				break;	
+			case 'E':
+			    p("\n\n\t\tNorte\t\tCentro\t\tSur\n\n\n");
+					for(i=0;i<12;i++){
+						if(i==8 || i==10 || i==11){
+							p("%s\t",meses[i]);
+							p("%.2f [mm]\t%.2f [mm]\t%.2f [mm]\n\n",norte[i],centro[i],sur[i]);
+							
+						}
+							
+						else{
+							p("%s\t",meses[i]);
+							p("\t%.2f [mm]\t%.2f [mm]\t%.2f [mm]\n\n",norte[i],centro[i],sur[i]);
+						}
+							
+						
+					}
 
-                break;
-            default:
-                p("\nOpcion Invalida, inserte una opcion correcta");
+
 				getchar();
 				p("\n\nPulsa enter para continuar...");
 				getchar();
-        }
-    }while(decision);
+			    break;	
+
+			case 'F':
+				break;
+				
+				
+			case 'G':
+				system(cls);
+				p("\n\nGracias por usar el programa hasta luego :D");
+				exit(0);
+			default:
+				p("\n\nAviso: Opcion invalida intentelo de nuevo\n\n");	
+				getchar();
+				p("\n\nPulsa enter para continuar...");
+				getchar();
+				break;	
+				
+				
+		}
+		
+	}while(consulta != 'F');
+	
+
+	if(consulta == 'F'){
+	    system(cls);
+		while(getchar()!='\n');
+	    return(menu());
+	}
+
+
 }

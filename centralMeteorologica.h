@@ -20,7 +20,7 @@ Análisis
 //Constantes
 #define p printf
 #define s scanf
-#define cls "clear"
+#define cls "cls"
 
 void centralMeteorologica();
 
