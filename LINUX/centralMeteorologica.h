@@ -183,6 +183,7 @@ void centralMeteorologica(){
 
 	if(consulta == 'F'){
 	    system("cls");
+		while(getchar()!='\n');
 	    return(menu());
 	}
 

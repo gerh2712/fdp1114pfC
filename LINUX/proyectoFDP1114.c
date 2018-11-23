@@ -6,8 +6,8 @@
 #include <math.h>
 #include <locale.h>
 #include "centralMeteorologica.h"
-//#include "administracionCine.h"
-//#include "calificacionAlumnos.h"
+#include "administracionCine.h"
+#include "calificacionAlumnos.h"
 
 //Constantes
 #define p printf
@@ -17,6 +17,8 @@
 
 //Prototipo de funciones
 void menu();
+void alumnos();
+void systemPause();
 
 //Función principal
 int main()
@@ -29,7 +31,6 @@ int main()
 //Funciones
 
 //Menu
-
 void menu(){
         //Variables
     char decision;
@@ -41,7 +42,8 @@ void menu(){
     p("\n\n\ta) Central Meteorologica de Mexico");
     p("\n\n\tb) Administracion de un cine");
     p("\n\n\tc) Calificaciones alumnos");
-    p("\n\n\td) Salir");
+    p("\n\n\td) Nombres de los alumnos");
+    p("\n\n\te) Salir");
     p("\n=> ");
     //fflush(stdin);
     s("%c", &decision);
@@ -57,7 +59,7 @@ void menu(){
             break;
         case 'B':
             system(cls);              
-            //administracionCine();
+            administracionCine();
             break;
 
         case 'C':
@@ -65,6 +67,10 @@ void menu(){
             calificacionAlumnos();
             break;
         case 'D':
+            system(cls);
+            alumnos();
+            exit(0);
+        case 'E':
             system(cls);
             p("\n\nGracias por usar el programa :D\n\n");
             exit(0);
@@ -78,5 +84,27 @@ void menu(){
     } while(decision != 'A' && decision != 'B' && decision != 'C');
 
     
+}
+
+//System Pause
+void systemP(){
+    printf("\n\nPresione una tecla para continuar...");
+    getchar();
+}
+
+void alumnos(){
+
+    system(cls);
+
+    printf("\n\nPrograma realizado por los alumnos de Fundamentos de Programación, grupo 1114: ");
+    printf("\n\n\tBueno Hernández Jorge Gerardo");
+    printf("\n\n\tMoreno Peralta Ángel Eduardo");
+    printf("\n\n\tPeña Cuevas Ricardo");
+
+    systemP();
+
+    return(menu());
+
+
 }
 
